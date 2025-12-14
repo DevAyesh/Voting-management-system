@@ -90,7 +90,13 @@ WSGI_APPLICATION = 'election_portal.wsgi.application'
 from django_mongodb_backend import parse_uri
 
 DATABASES = {
-    'default': parse_uri('mongodb://localhost:27017/election_portal_db'),
+    'default': {
+        'ENGINE': 'django_mongodb_backend',
+        'NAME': 'election_portal_db', # 💡 මෙහිදී ඔබේ database එකට නමක් දෙන්න. උදා: 'election_portal_db'
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017/', # 💡 මෙය ඔබගේ Compass connection URL එකට සමාන විය යුතුය.
+        }
+    }
 }
 
 
